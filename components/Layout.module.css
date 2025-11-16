@@ -1,0 +1,4 @@
+.main {
+  /* Stellt sicher, dass der Footer auch bei wenig Inhalt unten bleibt */
+  min-height: 75vh; 
+}

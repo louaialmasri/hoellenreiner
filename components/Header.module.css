@@ -1,0 +1,57 @@
+.header {
+  background-color: #1a1512;
+  border-bottom: 2px solid var(--color-gold-dark);
+  padding: 10px 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoImage {
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 1px solid var(--color-gold-dark);
+}
+
+.logoText {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 30px; /* Etwas mehr Abstand */
+}
+
+.navLink {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.2s;
+  padding-bottom: 5px; /* Platz für den Hover-Effekt */
+  border-bottom: 2px solid transparent; /* Platzhalter für Hover */
+}
+
+/* Hover-Effekt für die Navigation */
+.navLink:hover {
+  color: var(--color-gold-light);
+  border-bottom-color: var(--color-gold-light);
+}

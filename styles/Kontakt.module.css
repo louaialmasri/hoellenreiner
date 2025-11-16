@@ -1,0 +1,81 @@
+.formContainer {
+  max-width: 700px;
+  margin: 0 auto; /* Zentriert das Formular-Container */
+}
+
+.form {
+  background-color: var(--color-form-bg);
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 30px;
+  border: 1px solid var(--color-gold-dark);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: var(--color-gold-light);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-gold-dark);
+  border-radius: 4px;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-family: var(--font-sans);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-gold-light);
+  box-shadow: 0 0 10px var(--color-gold-dark);
+}
+
+.button {
+  background-color: var(--color-gold-dark);
+  color: #000;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: var(--color-gold-light);
+  transform: scale(1.02);
+}
+
+.button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.successMsg {
+  color: #4caf50; /* Grün */
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.errorMsg {
+  color: #f44336; /* Rot */
+  margin-top: 15px;
+  font-weight: bold;
+}
