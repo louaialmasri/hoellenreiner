@@ -1,0 +1,38 @@
+# Abhängigkeiten
+/node_modules
+
+# Next.js Build-Ordner
+/.next
+
+# Next.js statischer Export-Ordner
+/out
+
+# Produktions-Build
+/build
+
+# Lokale Konfigurationen (SEHR WICHTIG)
+# Hier stehen deine API-Schlüssel und Passwörter!
+.env.local
+.env*.local
+
+# Optionale Next.js .env-Dateien
+.env.development
+.env.production
+.env.test
+
+# Log-Dateien
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System-Dateien (macOS, Windows, Linux)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor-Konfigurationen (z.B. VS Code)
+.vscode/
+.idea/
+
+# Test-Ausgaben
+/coverage

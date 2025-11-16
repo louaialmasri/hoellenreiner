@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lato:wght@400;700&display=swap');
+
+:root {
+  --color-background: #261f1a; /* Dunkles Braun, fast schwarz */
+  --color-text: #e0d9c8;      /* Helleres Pergament-Weiß */
+  --color-gold-dark: #b8860b; /* Dunkles Gold für Akzente */
+  --color-gold-light: #e6c58f; /* Helles Gold für Highlights/Text */
+  --color-form-bg: #3a2e28;   /* Etwas helleres Braun für Formulare */
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Lato', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  color: var(--color-gold-light);
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid var(--color-gold-dark);
+  padding-bottom: 10px;
+}
+
+p {
+  font-size: 1.1rem;
+  max-width: 750px; /* Bessere Lesbarkeit */
+}
+
+a {
+  color: var(--color-gold-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Hilfsklassen */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 3px solid var(--color-gold-dark);
+}
