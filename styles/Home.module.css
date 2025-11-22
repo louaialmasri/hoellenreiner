@@ -4,7 +4,7 @@
   min-height: 400px;
   max-height: 550px;
   width: 100%;
-  overflow: hidden; /* Wichtig, damit das Image nicht über den Rahmen ragt, wenn contain verwendet wird */
+  overflow: hidden;
 }
 
 /* Der Text-Container */
@@ -14,16 +14,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* ÄNDERUNG 1: Text nach rechts verschieben */
-  justify-content: center; /* Vertikal immer noch zentriert */
-  align-items: flex-end; /* Horizontal an den rechten Rand des Flex-Containers */
-  text-align: right; /* Text innerhalb des Blocks rechtsbündig */
-  padding: 20px 80px; /* Mehr Padding rechts, um vom absoluten Rand wegzukommen */
+  justify-content: center; 
+  align-items: flex-end; /* Rechtsbündig */
+  text-align: right; 
+  padding: 20px 80px; 
   color: #fff;
   text-shadow: 0 2px 8px rgba(0,0,0,0.7); 
 }
 
-/* Verpasst dem Banner einen dunklen Überzug, damit der Text besser lesbar ist */
 .hero::after {
   content: '';
   position: absolute;
@@ -31,25 +29,73 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); /* Dunkler Filter */
+  background-color: rgba(0, 0, 0, 0.3); 
   z-index: 1;
 }
 
 .welcome {
   text-align: center;
-  padding-top: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .welcomeText {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 60px; /* Abstand zu den Icons */
 }
 
-/* Responsive Anpassung für den Text auf kleinen Bildschirmen */
+/* --- NEU: Trust Section Styling --- */
+
+.trustSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 40px;
+  /* Eine feine, edle Trennlinie nach oben */
+  border-top: 1px solid var(--color-form-border);
+}
+
+.trustItem {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+}
+
+.trustIcon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: block;
+  /* Optional: Falls wir den Emojis einen Schatten geben wollen */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.trustTitle {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.trustText {
+  font-size: 1rem;
+  color: #666; /* Etwas weicher als Schwarz */
+  line-height: 1.5;
+}
+
+/* Responsive: Auf Handys alles untereinander */
 @media (max-width: 768px) {
   .heroContent {
-    align-items: center; /* Auf Handys wieder zentriert */
-    text-align: center; /* Text auch zentriert */
-    padding: 20px; /* Normales Padding */
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .trustSection {
+    flex-direction: column;
+    gap: 40px;
   }
 }

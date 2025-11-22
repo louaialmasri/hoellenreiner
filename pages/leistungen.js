@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Leistungen.module.css';
+import { motion } from 'framer-motion'; // Wir nutzen Animationen für das "Reinfliegen"
 
-// KORRIGIERTE DATEINAMEN
+// Bilder
 const IMG_ANTIK_SCHMUCK = '/service-antikschmuck.jpeg';
 const IMG_GOLD_SCHMUCK = '/service-goldschmuck.jpeg';
 const IMG_MUENZEN = '/muenze.jpeg';
@@ -14,36 +16,76 @@ export default function Leistungen() {
       <Head>
         <title>Leistungen - Höllenreiner A.G.</title>
       </Head>
-      <div className="container">
-        <h1>Unsere Leistungen</h1>
-        <p>Wir sind spezialisiert auf den fachkundigen Ankauf einer Vielzahl von Wertgegenständen.</p>
+      
+      {/* Kleiner Intro-Container */}
+      <div className="container" style={{textAlign: 'center', paddingTop: '40px'}}>
+        <h1>Unsere Expertise</h1>
+        <p style={{margin: '0 auto'}}>
+          Wir widmen uns jedem Objekt mit der gebotenen Sorgfalt und Expertise. 
+          Entdecken Sie unsere Fachbereiche.
+        </p>
+      </div>
 
-        <div className={styles.grid}>
-          <div className={styles.serviceBox}>
-            <Image src={IMG_ANTIK_SCHMUCK} alt="Antikschmuck" width={400} height={300} className={styles.serviceImage} />
-            <h2>Antikschmuck</h2>
-            <p>Wir kaufen hochwertigen Schmuck aus vergangenen Jahrhunderten, darunter Ringe, Broschen, Anhänger und kunstvoll gearbeitete Stücke mit historischem Charakter. Besonders interessieren uns handgefertigte Objekte mit kunsthistorischem oder materiellem Wert.</p>
-          </div>
+      <div className={`container ${styles.showcaseContainer}`}>
+        
+        {/* Abschnitt 1: Antikschmuck */}
+        <Section 
+          title="Antikschmuck & Historische Stücke"
+          text="Wir kaufen hochwertigen Schmuck aus vergangenen Jahrhunderten, darunter Ringe, Broschen, Anhänger und kunstvoll gearbeitete Stücke mit historischem Charakter. Besonders interessieren uns handgefertigte Objekte mit kunsthistorischem Wert."
+          img={IMG_ANTIK_SCHMUCK}
+          alt="Antiker Schmuck"
+        />
 
-          <div className={styles.serviceBox}>
-            <Image src={IMG_GOLD_SCHMUCK} alt="Gold- & Silberschmuck" width={400} height={300} className={styles.serviceImage} />
-            <h2>Gold- & Silberschmuck</h2>
-            <p>Ob moderner Schmuck, historische Stücke oder beschädigte Einzelteile – Gold und Silber werden nach Feingehalt, Verarbeitung und Gewicht bewertet. Auch ungestempelte oder geerbte Schmuckstücke prüfen wir fachkundig.</p>
-          </div>
+        {/* Abschnitt 2: Gold & Silber */}
+        <Section 
+          title="Gold- & Silberschmuck"
+          text="Ob moderner Schmuck, historische Stücke oder beschädigte Einzelteile – Gold und Silber werden nach Feingehalt, Verarbeitung und Gewicht bewertet. Auch ungestempelte oder geerbte Schmuckstücke prüfen wir fachkundig in unserem Labor."
+          img={IMG_GOLD_SCHMUCK}
+          alt="Goldkette auf Maßband"
+        />
 
-          <div className={styles.serviceBox}>
-            <Image src={IMG_MUENZEN} alt="Gold- & Silbermünzen" width={400} height={300} className={styles.serviceImage} />
-            <h2>Gold- & Silbermünzen</h2>
-            <p>Wir kaufen einzelnes Münzmaterial ebenso wie komplette Sammlungen an – von klassischen Anlagemünzen bis hin zu raren historischen Prägungen. Zustand, Seltenheit und Edelmetallgehalt fließen in die Bewertung ein.</p>
-          </div>
+        {/* Abschnitt 3: Münzen */}
+        <Section 
+          title="Gold- & Silbermünzen"
+          text="Wir sind spezialisiert auf Numismatik. Wir kaufen einzelnes Münzmaterial ebenso wie komplette Sammlungen an – von klassischen Anlagemünzen bis hin zu raren historischen Prägungen (Kaiserreich, Antike). Zustand und Seltenheit bestimmen den Preis."
+          img={IMG_MUENZEN}
+          alt="Goldmünze"
+        />
 
-          <div className={styles.serviceBox}>
-            <Image src={IMG_NACHLASS} alt="Nachlässe & Sammlungen" width={400} height={300} className={styles.serviceImage} />
-            <h2>Nachlässe & Sammlungen</h2>
-            <p>Sie möchten einen kompletten Nachlass oder eine Sammlung auflösen? Wir übernehmen die sorgfältige Sortierung, Analyse und Bewertung aller Wertgegenstände – transparent, professionell und ohne Aufwand für Sie. Ideal bei Haushaltsauflösungen oder Erbangelegenheiten.</p>
-          </div>
-        </div>
+        {/* Abschnitt 4: Nachlässe */}
+        <Section 
+          title="Nachlässe & Sammlungen"
+          text="Sie möchten einen kompletten Nachlass oder eine Sammlung auflösen? Wir übernehmen die sorgfältige Sortierung, Analyse und Bewertung aller Wertgegenstände vor Ort – transparent, professionell und diskret. Ideal bei Haushaltsauflösungen oder Erbangelegenheiten."
+          img={IMG_NACHLASS}
+          alt="Antike Kommode"
+        />
+
       </div>
     </>
+  );
+}
+
+// Eine kleine Hilfs-Komponente, um den Code sauber zu halten
+// Sie animiert sich selbst beim Scrollen (Viewport)
+function Section({ title, text, img, alt }) {
+  return (
+    <motion.div 
+      className={styles.section}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className={styles.imageWrapper}>
+        <Image src={img} alt={alt} width={600} height={400} className={styles.serviceImage} />
+      </div>
+      <div className={styles.textContent}>
+        <h2>{title}</h2>
+        <p>{text}</p>
+        <Link href="/kontakt" className={styles.ctaButton}>
+          Kostenlose Bewertung anfragen
+        </Link>
+      </div>
+    </motion.div>
   );
 }

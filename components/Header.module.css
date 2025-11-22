@@ -1,5 +1,5 @@
 .header {
-  background-color: #1a1512;
+  background-color: var(--color-dark-bg); /* Bleibt dunkel */
   border-bottom: 2px solid var(--color-gold-dark);
   padding: 10px 0;
   width: 100%;
@@ -36,21 +36,20 @@
 
 .nav {
   display: flex;
-  gap: 30px; /* Etwas mehr Abstand */
+  gap: 30px;
 }
 
 .navLink {
   font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-light-text); /* WICHTIG: Helle Schrift auf dunklem Header */
   text-decoration: none;
   transition: color 0.2s;
-  padding-bottom: 5px; /* Platz für den Hover-Effekt */
-  border-bottom: 2px solid transparent; /* Platzhalter für Hover */
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
 }
 
-/* Hover-Effekt für die Navigation */
 .navLink:hover {
   color: var(--color-gold-light);
   border-bottom-color: var(--color-gold-light);
