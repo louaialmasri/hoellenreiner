@@ -1,31 +1,75 @@
-.containerFlex {
-  display: flex;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.textSection {
-  flex: 2; /* 2/3 Breite für Text */
-}
-
-.imageSection {
-  flex: 1; /* 1/3 Breite für Bilder */
+/* Container für die gesamte Seite */
+.pageWrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Abstand zwischen den Bildern */
+  gap: 100px; /* Viel Platz zwischen "Moderne" und "Tradition" */
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
-.waageImage {
+/* Eine einzelne Sektion */
+.section {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Die "Tradition"-Sektion drehen wir um (Bild links) */
+.sectionReverse {
+  flex-direction: row-reverse;
+}
+
+.textColumn {
+  flex: 1;
+}
+
+.imageColumn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 8px;
-  border: 3px solid var(--color-gold-dark);
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid var(--color-gold-dark);
+  padding: 5px;
+  background: #fff;
 }
 
-/* Responsive: Auf Handys Bilder unter den Text stapeln */
-@media (max-width: 768px) {
-  .containerFlex {
+/* Spezieller Style für das Wappen (sollte nicht beschnitten werden) */
+.wappenImage {
+  width: 60%; /* Wappen wirkt besser, wenn es etwas Luft hat */
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(184, 134, 11, 0.2)); /* Goldener Schatten */
+}
+
+.subline {
+  display: block;
+  font-family: var(--font-serif);
+  color: var(--color-gold-dark);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .section, .sectionReverse {
     flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .wappenImage {
+    width: 50%;
   }
 }
