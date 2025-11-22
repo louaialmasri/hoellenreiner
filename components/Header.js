@@ -9,9 +9,25 @@ const LOGO_FILE = '/Wappen.png';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  // NEU: State um zu prüfen, ob gescrollt wurde
+  const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
-  // Schließt das Menü automatisch, wenn man auf einen Link klickt (Seite wechselt)
+  // NEU: Scroll-Event Listener
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) { // Wenn mehr als 50px gescrollt
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Aufräumen beim Verlassen
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
     router.events.on('routeChangeStart', handleRouteChange);
@@ -20,7 +36,6 @@ export default function Header() {
     };
   }, [router.events]);
 
-  // Verhindert Scrollen im Hintergrund, wenn Menü offen ist
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -30,10 +45,10 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className={styles.header}>
+    // NEU: Wir fügen eine zweite CSS-Klasse hinzu, wenn gescrollt wurde
+    <header className={`${styles.header} ${isScrolled ? styles.scrolledHeader : ''}`}>
       <div className={styles.container}>
         
-        {/* Logo */}
         <Link href="/" className={styles.logoLink}>
           <Image 
             src={LOGO_FILE} 
@@ -45,7 +60,6 @@ export default function Header() {
           <span className={styles.logoText}>HÖLLENREINER A.G.</span>
         </Link>
 
-        {/* Desktop Navigation (wird per CSS auf Handy ausgeblendet) */}
         <nav className={styles.nav}>
           <Link href="/" className={styles.navLink}>Home</Link>
           <Link href="/leistungen" className={styles.navLink}>Leistungen</Link>
@@ -55,23 +69,20 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Hamburger Button (wird per CSS auf Desktop ausgeblendet) */}
         <button 
           className={styles.hamburgerBtn} 
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Menü öffnen"
         >
-          {/* Ein einfaches SVG Icon für den Hamburger / das X */}
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             {isOpen ? (
-              <path d="M18 6L6 18M6 6l12 12" /> // Das "X"
+              <path d="M18 6L6 18M6 6l12 12" />
             ) : (
-              <path d="M3 12h18M3 6h18M3 18h18" /> // Die 3 Linien
+              <path d="M3 12h18M3 6h18M3 18h18" />
             )}
           </svg>
         </button>
 
-        {/* Mobile Fullscreen Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div 

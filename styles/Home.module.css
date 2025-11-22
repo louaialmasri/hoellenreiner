@@ -2,28 +2,45 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  /* DESKTOP: Viel Höhe für Drama */
   height: 70vh; 
   min-height: 500px;
+  
+  /* DER FIX: */
+  /* Zieht das Banner 100px nach oben, direkt unter den Header */
+  margin-top: -100px; 
+  /* Optional: Ein bisschen Padding oben, damit der Inhalt optisch wieder in die Mitte rutscht */
+  padding-top: 50px; 
 }
 
-/* Der Text-Container */
+/* NEU: Der weiche Übergang am unteren Rand */
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; /* Höhe des Verlaufs */
+  /* Verlauf von transparent zu unserer hellen Hintergrundfarbe */
+  background: linear-gradient(to bottom, rgba(249, 247, 242, 0) 0%, var(--color-background) 100%);
+  z-index: 3; /* Muss über dem Bild und dem dunklen Overlay liegen */
+  pointer-events: none;
+}
+
 .heroContent {
   position: relative; 
   z-index: 2;
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* Wir schieben den Text nach rechts unten */
   justify-content: center; 
   align-items: flex-end; 
   text-align: right; 
-  padding: 0 10%; /* 10% Abstand vom Rand */
+  padding: 0 10%; 
   color: #fff;
-  text-shadow: 0 2px 15px rgba(0,0,0,0.8); /* Starker Schatten für Lesbarkeit */
+  text-shadow: 0 2px 15px rgba(0,0,0,0.8); 
 }
 
-/* Ein Verlauf (Gradient), der den Text lesbarer macht, ohne das Bild ganz abzudunkeln */
+/* Der dunkle Overlay über dem ganzen Bild */
 .hero::after {
   content: '';
   position: absolute;
@@ -31,22 +48,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* Verlauf von transparent (links) zu dunkel (rechts), wo der Text steht */
-  background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+  /* Etwas stärkerer Verlauf für bessere Lesbarkeit des transparenten Headers */
+  background: linear-gradient(to right, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
   z-index: 1;
 }
 
 .welcome {
   text-align: center;
-  padding-top: 80px; /* Mehr Platz zum Atmen */
+  /* Weniger Padding oben, da der Verlauf schon Platz schafft */
+  padding-top: 40px; 
   padding-bottom: 80px;
+  position: relative;
+  z-index: 4; /* Liegt über dem Verlauf */
 }
 
 .welcomeText {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 60px;
-  font-size: 1.2rem; /* Etwas größerer, edlerer Fließtext */
+  font-size: 1.2rem;
   color: var(--color-text);
 }
 
@@ -88,23 +108,19 @@
   line-height: 1.6;
 }
 
-/* --- RESPONSIVE ANPASSUNGEN (WICHTIG!) --- */
 @media (max-width: 768px) {
   .hero {
-    /* HANDY: Weniger Höhe! 
-       Dadurch muss das Bild nicht so stark zoomen (cover) und wir sehen mehr Breite. */
     height: 40vh; 
     min-height: 300px;
   }
 
   .heroContent {
-    align-items: center; /* Text wieder zentriert */
+    align-items: center; 
     text-align: center;
-    justify-content: flex-end; /* Text eher unten platzieren */
-    padding-bottom: 40px;
+    justify-content: flex-end;
+    padding-bottom: 60px; /* Etwas mehr Platz wegen des Verlaufs */
   }
   
-  /* Auf dem Handy machen wir den Verlauf dunkler, damit man den Text sicher lesen kann */
   .hero::after {
     background: rgba(0,0,0,0.4); 
   }
