@@ -1,18 +1,13 @@
 .header {
-  /* STICKY MAGIC: Klebt oben am Bildschirmrand */
-  position: sticky; 
+  position: sticky;
   top: 0;
-  z-index: 1000; /* Liegt über allen anderen Elementen */
+  z-index: 1000;
   width: 100%;
-  
-  /* GLASSMORPHISM: Der Milchglas-Effekt */
-  background-color: rgba(26, 21, 18, 0.85); /* Dunkles Braun mit 85% Deckkraft */
-  backdrop-filter: blur(12px); /* Der Weichzeichner für den Hintergrund */
-  -webkit-backdrop-filter: blur(12px); /* Für Safari Support */
-  
-  /* Feinerer Rand unten */
-  border-bottom: 1px solid rgba(184, 134, 11, 0.3); 
-  padding: 15px 0; /* Etwas mehr "Luft" wirkt edler */
+  background-color: rgba(26, 21, 18, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+  padding: 15px 0;
   transition: all 0.3s ease;
 }
 
@@ -29,6 +24,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  z-index: 1001; /* Damit das Logo auch bei offenem Menü klickbar bleibt */
 }
 
 .logoImage {
@@ -45,10 +41,11 @@
   letter-spacing: 1px;
 }
 
+/* Desktop Navigation */
 .nav {
   display: flex;
   gap: 30px;
-  align-items: center; /* Zentriert Text und Button vertikal */
+  align-items: center;
 }
 
 .navLink {
@@ -67,11 +64,10 @@
   border-bottom-color: var(--color-gold-light);
 }
 
-/* NEU: Der "Termin vereinbaren" Button im Header */
+/* Desktop Button */
 .ctaButton {
-  /* Ein Gold-Verlauf wirkt metallischer und hochwertiger */
   background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold-light) 100%);
-  color: #1a1512; /* Dunkle Schrift auf Gold für besten Kontrast */
+  color: #1a1512;
   padding: 10px 20px;
   border-radius: 4px;
   font-family: var(--font-sans);
@@ -79,11 +75,76 @@
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3); /* Goldener Schein */
+  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
 }
 
 .ctaButton:hover {
-  transform: translateY(-2px); /* Hebt sich leicht an */
+  transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(184, 134, 11, 0.5);
   color: #000;
+}
+
+/* --- MOBILE MENU STYLES --- */
+
+/* Hamburger Button (standardmäßig unsichtbar) */
+.hamburgerBtn {
+  display: none; /* Nur auf Handy sichtbar */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; /* Über dem Overlay */
+  color: var(--color-gold-light);
+  padding: 5px;
+}
+
+/* Mobile Overlay (Vollbild Menü) */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(26, 21, 18, 0.98); /* Fast undurchsichtig */
+  backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  z-index: 1000;
+}
+
+.mobileNavLink {
+  font-family: var(--font-serif); /* Edler Serif-Font für Mobile */
+  font-size: 2rem;
+  color: var(--color-light-text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mobileNavLink:hover {
+  color: var(--color-gold-light);
+}
+
+/* RESPONSIVE REGELN */
+@media (max-width: 900px) {
+  /* Desktop Nav ausblenden */
+  .nav {
+    display: none;
+  }
+
+  /* Hamburger einblenden */
+  .hamburgerBtn {
+    display: block;
+  }
+  
+  /* Logo-Text auf Handy etwas kleiner, damit es nicht bricht */
+  .logoText {
+    font-size: 1.1rem; 
+  }
+  
+  .logoImage {
+    width: 45px;
+    height: 45px;
+  }
 }
