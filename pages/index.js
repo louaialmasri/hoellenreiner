@@ -10,7 +10,14 @@ export default function Home() {
     <>
       <Head>
         <title>Höllenreiner A.G. - Werte wahren, Schätze erkennen</title>
-        <meta name="description" content="Ihr Partner für den Ankauf von Edelmetallen, Antiquitäten und Sammlerstücken." />
+        <meta name="description" content="Ihr Partner für den Ankauf von Edelmetallen, Antiquitäten und Sammlerstücken. Seriös, diskret und fair." />
+        
+        {/* Open Graph / Social Media Tags */}
+        <meta property="og:title" content="Höllenreiner A.G. | Werte wahren, Schätze erkennen" />
+        <meta property="og:description" content="Spezialisiert auf Antikschmuck, Gold, Münzen & Militaria. Faire Bewertung & Sofortige Auszahlung." />
+        <meta property="og:image" content="/banner-home.jpeg" /> {/* Dein Banner als Vorschaubild */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="de_DE" />
       </Head>
       
       <div className={styles.hero}>
