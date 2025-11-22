@@ -1,8 +1,19 @@
 .header {
-  background-color: var(--color-dark-bg); /* Bleibt dunkel */
-  border-bottom: 2px solid var(--color-gold-dark);
-  padding: 10px 0;
+  /* STICKY MAGIC: Klebt oben am Bildschirmrand */
+  position: sticky; 
+  top: 0;
+  z-index: 1000; /* Liegt über allen anderen Elementen */
   width: 100%;
+  
+  /* GLASSMORPHISM: Der Milchglas-Effekt */
+  background-color: rgba(26, 21, 18, 0.85); /* Dunkles Braun mit 85% Deckkraft */
+  backdrop-filter: blur(12px); /* Der Weichzeichner für den Hintergrund */
+  -webkit-backdrop-filter: blur(12px); /* Für Safari Support */
+  
+  /* Feinerer Rand unten */
+  border-bottom: 1px solid rgba(184, 134, 11, 0.3); 
+  padding: 15px 0; /* Etwas mehr "Luft" wirkt edler */
+  transition: all 0.3s ease;
 }
 
 .container {
@@ -37,13 +48,14 @@
 .nav {
   display: flex;
   gap: 30px;
+  align-items: center; /* Zentriert Text und Button vertikal */
 }
 
 .navLink {
   font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-light-text); /* WICHTIG: Helle Schrift auf dunklem Header */
+  color: var(--color-light-text);
   text-decoration: none;
   transition: color 0.2s;
   padding-bottom: 5px;
@@ -53,4 +65,25 @@
 .navLink:hover {
   color: var(--color-gold-light);
   border-bottom-color: var(--color-gold-light);
+}
+
+/* NEU: Der "Termin vereinbaren" Button im Header */
+.ctaButton {
+  /* Ein Gold-Verlauf wirkt metallischer und hochwertiger */
+  background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold-light) 100%);
+  color: #1a1512; /* Dunkle Schrift auf Gold für besten Kontrast */
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3); /* Goldener Schein */
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px); /* Hebt sich leicht an */
+  box-shadow: 0 6px 20px rgba(184, 134, 11, 0.5);
+  color: #000;
 }

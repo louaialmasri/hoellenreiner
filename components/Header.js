@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './Header.module.css'; // Importiert das CSS Modul
+import styles from './Header.module.css'; 
 
 const LOGO_FILE = '/Wappen.png'; 
 
@@ -12,10 +12,9 @@ export default function Header() {
           <Image 
             src={LOGO_FILE} 
             alt="Höllenreiner A.G. Wappen" 
-            width={80} 
-            height={80} 
+            width={60} // Etwas kleiner für den Sticky Header, wirkt eleganter
+            height={60} 
             className={styles.logoImage}
-            // 'priority' entfernt, um die React-Warnung aus dem Log zu beheben.
           />
           <span className={styles.logoText}>HÖLLENREINER A.G.</span>
         </Link>
@@ -23,7 +22,11 @@ export default function Header() {
           <Link href="/" className={styles.navLink}>Home</Link>
           <Link href="/leistungen" className={styles.navLink}>Leistungen</Link>
           <Link href="/ueber-uns" className={styles.navLink}>Über Uns</Link>
-          <Link href="/kontakt" className={styles.navLink}>Kontakt</Link>
+          
+          {/* Der neue Button statt einfachem Link */}
+          <Link href="/kontakt" className={styles.ctaButton}>
+            Termin vereinbaren
+          </Link>
         </nav>
       </div>
     </header>
