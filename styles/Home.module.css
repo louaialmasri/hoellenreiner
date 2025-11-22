@@ -1,10 +1,10 @@
 .hero {
   position: relative;
-  height: 50vh; 
-  min-height: 400px;
-  max-height: 550px;
   width: 100%;
   overflow: hidden;
+  /* DESKTOP: Viel Höhe für Drama */
+  height: 70vh; 
+  min-height: 500px;
 }
 
 /* Der Text-Container */
@@ -14,14 +14,16 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  /* Wir schieben den Text nach rechts unten */
   justify-content: center; 
-  align-items: flex-end; /* Rechtsbündig */
+  align-items: flex-end; 
   text-align: right; 
-  padding: 20px 80px; 
+  padding: 0 10%; /* 10% Abstand vom Rand */
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7); 
+  text-shadow: 0 2px 15px rgba(0,0,0,0.8); /* Starker Schatten für Lesbarkeit */
 }
 
+/* Ein Verlauf (Gradient), der den Text lesbarer macht, ohne das Bild ganz abzudunkeln */
 .hero::after {
   content: '';
   position: absolute;
@@ -29,31 +31,32 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); 
+  /* Verlauf von transparent (links) zu dunkel (rechts), wo der Text steht */
+  background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
   z-index: 1;
 }
 
 .welcome {
   text-align: center;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 80px; /* Mehr Platz zum Atmen */
+  padding-bottom: 80px;
 }
 
 .welcomeText {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 60px; /* Abstand zu den Icons */
+  margin-bottom: 60px;
+  font-size: 1.2rem; /* Etwas größerer, edlerer Fließtext */
+  color: var(--color-text);
 }
 
-/* --- NEU: Trust Section Styling --- */
-
+/* --- Trust Section Styling --- */
 .trustSection {
   display: flex;
   justify-content: space-between;
   gap: 40px;
   margin-top: 40px;
-  padding-top: 40px;
-  /* Eine feine, edle Trennlinie nach oben */
+  padding-top: 60px;
   border-top: 1px solid var(--color-form-border);
 }
 
@@ -65,37 +68,49 @@
 
 .trustIcon {
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: block;
-  /* Optional: Falls wir den Emojis einen Schatten geben wollen */
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
 .trustTitle {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--color-gold-dark);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   display: block;
 }
 
 .trustText {
   font-size: 1rem;
-  color: #666; /* Etwas weicher als Schwarz */
-  line-height: 1.5;
+  color: #666;
+  line-height: 1.6;
 }
 
-/* Responsive: Auf Handys alles untereinander */
+/* --- RESPONSIVE ANPASSUNGEN (WICHTIG!) --- */
 @media (max-width: 768px) {
+  .hero {
+    /* HANDY: Weniger Höhe! 
+       Dadurch muss das Bild nicht so stark zoomen (cover) und wir sehen mehr Breite. */
+    height: 40vh; 
+    min-height: 300px;
+  }
+
   .heroContent {
-    align-items: center;
+    align-items: center; /* Text wieder zentriert */
     text-align: center;
-    padding: 20px;
+    justify-content: flex-end; /* Text eher unten platzieren */
+    padding-bottom: 40px;
   }
   
+  /* Auf dem Handy machen wir den Verlauf dunkler, damit man den Text sicher lesen kann */
+  .hero::after {
+    background: rgba(0,0,0,0.4); 
+  }
+
   .trustSection {
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
   }
 }

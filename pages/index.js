@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import { motion } from 'framer-motion'; // Für die Animation
+import { motion } from 'framer-motion';
 
-const BANNER_FILE = '/banner-home.png';
+const BANNER_FILE = '/gemini.png';
 
 export default function Home() {
   return (
@@ -18,11 +18,21 @@ export default function Home() {
           src={BANNER_FILE} 
           alt="Höllenreiner A.G. Banner" 
           fill 
-          style={{ objectFit: 'contain', backgroundColor: 'var(--color-background)' }} 
+          // HIER IST DER TRICK:
+          // objectFit: 'cover' -> Füllt alles aus (keine Ränder)
+          // objectPosition: '30% center' ->  Fokussiert etwas links von der Mitte (wo das Wappen ist)
+          style={{ objectFit: 'cover', objectPosition: '30% center' }} 
           priority 
         />
         <div className={styles.heroContent}>
-          <h1>WERTE WAHREN, SCHÄTZE ERKENNEN</h1>
+          {/* Wir nutzen motion für ein sanftes Einblenden des Textes */}
+          <motion.h1 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            WERTE WAHREN,<br />SCHÄTZE ERKENNEN
+          </motion.h1>
         </div>
       </div>
 
@@ -35,15 +45,13 @@ export default function Home() {
           echte Schätze zu erkennen. Diskret, zuverlässig und stets mit fairer Bewertung.
         </p>
 
-        {/* NEU: Die Trust-Elemente mit Animation */}
         <motion.div 
           className={styles.trustSection}
-          initial={{ opacity: 0, y: 30 }} // Startet unsichtbar und etwas tiefer
-          whileInView={{ opacity: 1, y: 0 }} // Fährt hoch und wird sichtbar
-          viewport={{ once: true }} // Nur einmal animieren
-          transition={{ duration: 0.8, delay: 0.2 }} // Langsam und elegant
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          
           <div className={styles.trustItem}>
             <span className={styles.trustIcon}>💎</span>
             <span className={styles.trustTitle}>Faire Bewertung</span>
@@ -61,7 +69,6 @@ export default function Home() {
             <span className={styles.trustTitle}>100% Diskret</span>
             <p className={styles.trustText}>Seriöse Abwicklung in geschützter Atmosphäre. Ihre Privatsphäre hat für uns oberste Priorität.</p>
           </div>
-
         </motion.div>
 
       </div>
