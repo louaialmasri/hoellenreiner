@@ -9,7 +9,21 @@
   /* Zieht das Banner 100px nach oben, direkt unter den Header */
   margin-top: -100px; 
   /* Optional: Ein bisschen Padding oben, damit der Inhalt optisch wieder in die Mitte rutscht */
-  padding-top: 50px; 
+  padding-top: 50px;
+  background-color: #000; 
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%; /* Wichtig, damit es den Container ausfüllt */
+  
+  /* 1. Stellt sicher, dass das Bild den Bereich füllt, ohne verzerrt zu werden */
+  object-fit: cover; 
+
+  /* 2. DAS IST DER ENTSCHEIDENDE PUNKT: */
+  /* "bottom" zwingt die Unterkante des Bildes an die Unterkante des Containers. */
+  /* "center" zentriert es horizontal. */
+  object-position: bottom center; 
 }
 
 /* Der weiche Übergang am unteren Rand */
@@ -25,6 +39,17 @@
   z-index: 3; /* Muss über dem Bild und dem dunklen Overlay liegen */
   pointer-events: none;
 }
+/* Seitlicher Verlauf (Vignette), damit man keine harten Kanten sieht 
+.heroContent::before {
+  content: '';
+  position: absolute;
+  top: 10;
+  left: 0; 
+  width: 80%; 
+  height: 140%;
+  background: radial-gradient(circle, transparent 50%, #000 100%);
+  z-index: -1; 
+} */
 
 .heroContent {
   position: relative; 

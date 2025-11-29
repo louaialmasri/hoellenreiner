@@ -28,20 +28,21 @@ export default function Home() {
           // HIER IST DER TRICK:
           // objectFit: 'cover' -> Füllt alles aus (keine Ränder)
           // objectPosition: '30% center' ->  Fokussiert etwas links von der Mitte (wo das Wappen ist)
-          style={{ objectFit: 'cover', objectPosition: '30% center' }} 
+          className={styles.bannerImage}
+          quality={100} 
           priority 
         />
         <div className={styles.heroContent}>
           {/* Wir nutzen motion für ein sanftes Einblenden des Textes */}
-          <motion.h2 
+          <motion.h3 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className={styles.goldShimmer} 
-            style={{ fontSize: '2.5rem', fontWeight: '600', margin: 0, lineHeight: 1.2 }} // Styling manuell sicherstellen, da h2 sonst kleiner wäre
+            style={{ fontSize: '2rem', fontWeight: '600', margin: 0, lineHeight: 1.2 }} // Styling manuell sicherstellen, da h2 sonst kleiner wäre
           >
-            WERTE WAHREN,<br />SCHÄTZE ERKENNEN
-          </motion.h2>
+            WERTE WAHREN, SCHÄTZE ERKENNEN
+          </motion.h3>
         </div>
       </div>
 
