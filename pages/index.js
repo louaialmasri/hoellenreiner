@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
 
-const BANNER_FILE = '/gemini.png';
+const BANNER_FILE = '/banner.png';
 
 export default function Home() {
   return (
@@ -33,13 +33,14 @@ export default function Home() {
         />
         <div className={styles.heroContent}>
           {/* Wir nutzen motion für ein sanftes Einblenden des Textes */}
-          <motion.h1 
+          <motion.h2 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className='styles.goldShimmer'
           >
             WERTE WAHREN,<br />SCHÄTZE ERKENNEN
-          </motion.h1>
+          </motion.h2>
         </div>
       </div>
 

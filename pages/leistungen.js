@@ -7,14 +7,13 @@ import { motion } from 'framer-motion';
 import Lightbox from '../components/Lightbox'; 
 
 // Bilder
-// HINWEIS: Sobald du die neuen Bilder hast, laden wir sie hoch und ändern die Dateinamen hier.
 const IMG_ANTIK_SCHMUCK = '/service-antikschmuck.jpeg';
 const IMG_GOLD_SCHMUCK = '/service-goldschmuck.jpeg';
 const IMG_MUENZEN = '/muenze.jpeg';
 const IMG_NACHLASS = '/service-nachlass.jpeg';
-// Platzhalter für die neuen Kategorien (nutzen vorerst existierende Bilder)
+// Platzhalter
 const IMG_ZINN_ZAHN = '/service-goldschmuck.jpeg'; 
-const IMG_MILITARIA = '/wappen.png'; // Das Wappen passt gut als Platzhalter für Historisches
+const IMG_MILITARIA = '/Wappen.png'; 
 
 export default function Leistungen() {
   const [selectedImg, setSelectedImg] = useState(null);
@@ -30,17 +29,22 @@ export default function Leistungen() {
         onClose={() => setSelectedImg(null)} 
       />
 
-      <div className="container" style={{textAlign: 'center', paddingTop: '60px', paddingBottom: '20px'}}>
-        <h1>Unsere Expertise</h1>
-        <p style={{margin: '0 auto'}}>
-          Wir widmen uns jedem Objekt mit der gebotenen Sorgfalt und Expertise. 
-          Entdecken Sie unsere erweiterten Fachbereiche.
-        </p>
+      {/* NEU: Der dunkle "Page Hero" Bereich */}
+      {/* Das löst das Problem mit dem transparenten Header und der weißen Fläche */}
+      <div className="subPageHero">
+        <div className="container" style={{padding: 0}}>
+          <h1>Unsere Expertise</h1>
+          <p>
+            Wir widmen uns jedem Objekt mit der gebotenen Sorgfalt und Expertise. 
+            Entdecken Sie unsere Fachbereiche.
+          </p>
+        </div>
       </div>
 
       <div className={`container ${styles.showcaseContainer}`}>
         
-        {/* 1. Antikschmuck */}
+        {/* ... (Die Sektionen bleiben exakt gleich wie vorher) ... */}
+        
         <Section 
           title="Antikschmuck & Historische Stücke"
           text="Wir kaufen hochwertigen Schmuck aus vergangenen Jahrhunderten, darunter Ringe, Broschen, Anhänger und kunstvoll gearbeitete Stücke mit historischem Charakter. Besonders interessieren uns handgefertigte Objekte mit kunsthistorischem Wert."
@@ -49,7 +53,6 @@ export default function Leistungen() {
           onImageClick={() => setSelectedImg({ src: IMG_ANTIK_SCHMUCK, alt: "Antiker Schmuck" })}
         />
 
-        {/* 2. Gold & Silber */}
         <Section 
           title="Gold- & Silberschmuck"
           text="Ob moderner Schmuck, historische Stücke oder beschädigte Einzelteile – Gold und Silber werden nach Feingehalt, Verarbeitung und Gewicht bewertet. Auch ungestempelte oder geerbte Schmuckstücke prüfen wir fachkundig in unserem Labor."
@@ -58,7 +61,6 @@ export default function Leistungen() {
           onImageClick={() => setSelectedImg({ src: IMG_GOLD_SCHMUCK, alt: "Goldkette auf Maßband" })}
         />
 
-        {/* 3. Münzen */}
         <Section 
           title="Gold- & Silbermünzen"
           text="Wir sind spezialisiert auf Numismatik. Wir kaufen einzelnes Münzmaterial ebenso wie komplette Sammlungen an – von klassischen Anlagemünzen bis hin zu raren historischen Prägungen (Kaiserreich, Antike). Zustand und Seltenheit bestimmen den Preis."
@@ -67,7 +69,6 @@ export default function Leistungen() {
           onImageClick={() => setSelectedImg({ src: IMG_MUENZEN, alt: "Goldmünze" })}
         />
 
-        {/* 4. Zinn & Zahngold (NEU) */}
         <Section 
           title="Zinn, Zahngold & Edelmetalle"
           text="Auch unscheinbare Reste können wertvoll sein. Wir analysieren und vergüten Zinngegenstände, Zahngold (auch mit Anhaftungen/Zähnen) sowie Bruchgold und Silberbesteck. Unsere modernen Analysemethoden garantieren eine exakte Wertermittlung für jede Legierung und Restbestände."
@@ -76,7 +77,6 @@ export default function Leistungen() {
           onImageClick={() => setSelectedImg({ src: IMG_ZINN_ZAHN, alt: "Zahngold und Edelmetalle" })}
         />
 
-        {/* 5. Militaria (NEU) */}
         <Section 
           title="Militaria & Historische Zeitzeugen"
           text="Wir sind ständig auf der Suche nach militärischen Antiquitäten und Orden aus verschiedenen Epochen. Ob Uniformen, Dolche, Ausrüstungsgegenstände, Urkunden oder Ehrenzeichen – wir bewerten Ihre historischen Sammlerstücke mit fachmännischer Expertise und Diskretion."
@@ -85,7 +85,6 @@ export default function Leistungen() {
           onImageClick={() => setSelectedImg({ src: IMG_MILITARIA, alt: "Militaria" })}
         />
 
-        {/* 6. Nachlässe */}
         <Section 
           title="Nachlässe & Sammlungen"
           text="Sie möchten einen kompletten Nachlass oder eine Sammlung auflösen? Wir übernehmen die sorgfältige Sortierung, Analyse und Bewertung aller Wertgegenstände vor Ort – transparent, professionell und diskret. Ideal bei Haushaltsauflösungen oder Erbangelegenheiten."
