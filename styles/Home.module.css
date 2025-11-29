@@ -3,7 +3,7 @@
   width: 100%;
   overflow: hidden;
   height: 70vh; 
-  min-height: 500px;
+  min-height: 550px;
   
   /* DER FIX: */
   /* Zieht das Banner 100px nach oben, direkt unter den Header */
@@ -12,14 +12,14 @@
   padding-top: 50px; 
 }
 
-/* NEU: Der weiche Übergang am unteren Rand */
+/* Der weiche Übergang am unteren Rand */
 .hero::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 150px; /* Höhe des Verlaufs */
+  height: 75px; /* Höhe des Verlaufs */
   /* Verlauf von transparent zu unserer hellen Hintergrundfarbe */
   background: linear-gradient(to bottom, rgba(249, 247, 242, 0) 0%, var(--color-background) 100%);
   z-index: 3; /* Muss über dem Bild und dem dunklen Overlay liegen */
@@ -28,14 +28,21 @@
 
 .heroContent {
   position: relative; 
-  z-index: 2;
-  height: 100%;
+  z-index: 4; 
+  height: 70%;
   display: flex;
   flex-direction: column;
+  
+  /* Ausgleich für den negativen Margin oben */
   justify-content: center; 
-  align-items: flex-end; 
-  text-align: right; 
-  padding: 0 10%; 
+  padding-top: 50px; 
+  
+  /* ÄNDERUNG: ALLES NACH LINKS */
+  align-items: flex-start; /* Linksbündig ausrichten */
+  text-align: left;        /* Text linksbündig */
+  padding-left: 10%;       /* Abstand vom linken Rand */
+  padding-right: 10%;
+  
   color: #fff;
   text-shadow: 0 2px 15px rgba(0,0,0,0.8); 
 }
@@ -128,5 +135,29 @@
   .trustSection {
     flex-direction: column;
     gap: 60px;
+  }
+}
+
+.goldShimmer {
+  background: linear-gradient(
+    110deg, 
+    var(--color-gold-dark) 10%, 
+    var(--color-gold-light) 30%, 
+    #fff8e1 50%, 
+    var(--color-gold-light) 70%, 
+    var(--color-gold-dark) 90%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shine 8s linear infinite;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.1));
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
   }
 }
