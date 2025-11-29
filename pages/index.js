@@ -37,7 +37,8 @@ export default function Home() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className='styles.goldShimmer'
+            className={styles.goldShimmer} 
+            style={{ fontSize: '2.5rem', fontWeight: '600', margin: 0, lineHeight: 1.2 }} // Styling manuell sicherstellen, da h2 sonst kleiner wäre
           >
             WERTE WAHREN,<br />SCHÄTZE ERKENNEN
           </motion.h2>

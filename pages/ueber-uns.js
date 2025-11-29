@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 // Bilder
 const IMG_WAAGE_1 = '/waage-1.jpeg';
 const IMG_WAAGE_2 = '/waage-2.jpeg';
-const IMG_WAPPEN = '/Wappen1.png'; 
+const IMG_WAPPEN = '/Wappen.png'; 
 
 export default function UeberUns() {
   return (
@@ -14,6 +14,17 @@ export default function UeberUns() {
       <Head>
         <title>Über Uns & Historie - Höllenreiner A.G.</title>
       </Head>
+      
+      {/* NEU: Der dunkle Page-Hero (wie bei Leistungen) */}
+      <div className="subPageHero">
+        <div className="container" style={{padding: 0}}>
+          <h1>Über Uns & Historie</h1>
+          <p>
+            Tradition, die verpflichtet. Kompetenz, die überzeugt.<br />
+            Lernen Sie das Familienunternehmen Höllenreiner kennen.
+          </p>
+        </div>
+      </div>
       
       <div className="container">
         <div className={styles.pageWrapper}>
@@ -28,7 +39,8 @@ export default function UeberUns() {
           >
             <div className={styles.textColumn}>
               <span className={styles.subline}>Kompetenz & Fairness</span>
-              <h1>Warum an Höllenreiner verkaufen?</h1>
+              {/* Hier nutzen wir h2, da h1 schon oben im Hero ist */}
+              <h2>Warum an Höllenreiner verkaufen?</h2>
               <p>
                 Die Höllenreiner A.G. verbindet langjährige Erfahrung im Umgang mit Edelmetallen, Antikschmuck und historischen 
                 Wertgegenständen mit einem hohen Anspruch an Seriosität und Fachwissen. 
@@ -47,7 +59,7 @@ export default function UeberUns() {
 
           {/* SEKTION 2: Die Historie (Das Wappen) */}
           <motion.div 
-            className={`${styles.section} ${styles.sectionReverse}`} // Dreht das Layout um
+            className={`${styles.section} ${styles.sectionReverse}`} 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,7 +67,7 @@ export default function UeberUns() {
           >
             <div className={styles.textColumn}>
               <span className={styles.subline}>Tradition seit 1438</span>
-              <h1>Ein Name mit Geschichte</h1>
+              <h2>Ein Name mit Geschichte</h2>
               <p>
                 Seriosität hat bei uns Tradition. Das Geschlecht der Höllenreiner wird bereits im <strong>14. Jahrhundert</strong> urkundlich nachgewiesen.
               </p>
@@ -73,7 +85,7 @@ export default function UeberUns() {
                 height={500} 
                 className={styles.wappenImage} 
               />
-              <small style={{color: '#888', fontSize: '0.8rem'}}>Verliehen von Kaiser Albrecht II., Regensburg 1438</small>
+              <small style={{color: '#888', fontSize: '0.8rem', marginTop: '10px', display: 'block'}}>Verliehen von Kaiser Albrecht II., Regensburg 1438</small>
             </div>
           </motion.div>
 
