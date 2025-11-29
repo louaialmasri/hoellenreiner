@@ -83,15 +83,26 @@
 
 /* Responsive: Auf Handy alles untereinander */
 @media (max-width: 900px) {
-  .section {
+  .section, .sectionReverse {
     flex-direction: column !important; /* Immer untereinander */
     gap: 30px;
-    text-align: center;
-    padding-bottom: 60px;
+    /* Wichtig: Auf Handy drehen wir die Reihenfolge um! 
+       Erst Bild, dann Text? Oder erst Text? 
+       Standard: Bild oben ist meistens schöner. */
+  }
+  
+  /* Spezieller Fix für die Reihenfolge auf Mobile */
+  .section:nth-child(even) {
+    flex-direction: column !important;
   }
 
   .serviceImage {
-    height: 300px;
+    height: 250px; /* Auf Handy nicht zu hoch, sonst muss man ewig scrollen */
+  }
+  
+  .textContent {
+    padding: 0 10px; /* Etwas Abstand zum Rand */
+    text-align: center; /* Zentrierter Text wirkt auf Handy oft ruhiger */
   }
   
   .textContent h2 {

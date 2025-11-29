@@ -115,26 +115,56 @@
   line-height: 1.6;
 }
 
+/* ... (Desktop Styles bleiben) ... */
+
+/* NEU: Tablet Optimierung (zwischen Handy und Desktop) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    height: 50vh; /* Etwas flacher als Desktop */
+    min-height: 450px;
+  }
+  
+  .heroContent {
+    padding-left: 5%; /* Weniger Rand auf Tablets */
+    padding-right: 5%;
+  }
+  
+  .welcomeText {
+    width: 90%; /* Text nutzt mehr Breite */
+  }
+}
+
+/* Handy Optimierung (Update) */
 @media (max-width: 768px) {
   .hero {
-    height: 40vh; 
-    min-height: 300px;
+    height: 50vh; /* Genug Höhe für das Bild */
+    min-height: 400px; /* Aber nicht kleiner als das */
+    margin-top: -90px; /* Header ist auf Handy oft etwas kleiner */
   }
 
   .heroContent {
     align-items: center; 
     text-align: center;
-    justify-content: flex-end;
-    padding-bottom: 60px; /* Etwas mehr Platz wegen des Verlaufs */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* Vertikal zentrieren */
+    justify-content: center;
+    padding-top: 60px;
   }
   
-  .hero::after {
-    background: rgba(0,0,0,0.4); 
+  /* Dunklerer Hintergrund für bessere Lesbarkeit auf Handy */
+  .heroContent::before { 
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
   }
 
   .trustSection {
     flex-direction: column;
-    gap: 60px;
+    gap: 40px;
+  }
+  
+  .welcome {
+    padding-top: 40px;
   }
 }
 

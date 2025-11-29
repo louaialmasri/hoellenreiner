@@ -138,9 +138,27 @@
   color: var(--color-gold-light);
 }
 
-@media (max-width: 900px) {
-  .nav { display: none; }
-  .hamburgerBtn { display: block; }
-  .logoText { font-size: 1.1rem; }
-  .logoImage { width: 45px; height: 45px; }
+@media (max-width: 1024px) {
+  .nav {
+    display: none; /* Desktop Nav weg */
+  }
+
+  .hamburgerBtn {
+    display: block; /* Hamburger her */
+  }
+  
+  /* Optimierung der Logo-Größe für Tablets/Handys */
+  .logoText {
+    font-size: 1.2rem; 
+  }
+  
+  .logoImage {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Der Header darf auf Mobile etwas kompakter sein */
+  .header {
+    padding: 10px 0;
+  }
 }
