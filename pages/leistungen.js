@@ -7,13 +7,13 @@ import { motion } from 'framer-motion';
 import Lightbox from '../components/Lightbox'; 
 
 // Bilder
-const IMG_ANTIK_SCHMUCK = '/service-antikschmuck.jpeg';
-const IMG_GOLD_SCHMUCK = '/service-goldschmuck.jpeg';
-const IMG_MUENZEN = '/muenze.jpeg';
-const IMG_NACHLASS = '/service-nachlass.jpeg';
+const IMG_ANTIK_SCHMUCK = '/service-antikschmuck.jpg';
+const IMG_GOLD_SCHMUCK = '/service-goldschmuck.jpg';
+const IMG_MUENZEN = '/muenze.jpg';
+const IMG_NACHLASS = '/serivce-sammlung.jpg';
 // Platzhalter
-const IMG_ZINN_ZAHN = '/service-goldschmuck.jpeg'; 
-const IMG_MILITARIA = '/Wappen.png'; 
+const IMG_ZINN_ZAHN = '/service-zinn.jpg'; 
+const IMG_MILITARIA = '/service-militaria.jpg'; 
 
 export default function Leistungen() {
   const [selectedImg, setSelectedImg] = useState(null);
