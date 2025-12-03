@@ -59,13 +59,19 @@
 .link {
   color: var(--color-light-text);
   text-decoration: none;
-  transition: color 0.2s;
   font-size: 1rem;
+  
+  /* ÄNDERUNG 1: Wir erlauben Transformationen und animieren diese auch */
+  display: inline-block; 
+  transition: color 0.2s, transform 0.2s ease; 
 }
 
 .link:hover {
   color: var(--color-gold-light);
-  padding-left: 5px;
+  /* padding-left: 5px;  <-- DIESE ZEILE LÖSCHEN */
+  
+  /* ÄNDERUNG 2: Stattdessen nutzen wir Transform */
+  transform: translateX(5px); 
 }
 
 .contactItem {

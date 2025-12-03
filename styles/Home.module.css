@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 70vh; 
+  height: 75vh; 
   min-height: 550px;
   
   /* DER FIX: */
@@ -33,23 +33,12 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 75px; /* Höhe des Verlaufs */
+  height: 50px; /* Höhe des Verlaufs */
   /* Verlauf von transparent zu unserer hellen Hintergrundfarbe */
   background: linear-gradient(to bottom, rgba(249, 247, 242, 0) 0%, var(--color-background) 100%);
   z-index: 3; /* Muss über dem Bild und dem dunklen Overlay liegen */
   pointer-events: none;
 }
-/* Seitlicher Verlauf (Vignette), damit man keine harten Kanten sieht 
-.heroContent::before {
-  content: '';
-  position: absolute;
-  top: 10;
-  left: 0; 
-  width: 80%; 
-  height: 140%;
-  background: radial-gradient(circle, transparent 50%, #000 100%);
-  z-index: -1; 
-} */
 
 .heroContent {
   position: relative; 
@@ -81,7 +70,7 @@
   width: 100%;
   height: 100%;
   /* Etwas stärkerer Verlauf für bessere Lesbarkeit des transparenten Headers */
-  background: linear-gradient(to right, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+  background: linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 100%);
   z-index: 1;
 }
 

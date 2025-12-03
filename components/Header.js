@@ -65,7 +65,7 @@ export default function Header() {
           <Link href="/leistungen" className={styles.navLink}>Leistungen</Link>
           <Link href="/ueber-uns" className={styles.navLink}>Über Uns</Link>
           <Link href="/kontakt" className={styles.ctaButton}>
-            Termin vereinbaren
+            Kontakt
           </Link>
         </nav>
 

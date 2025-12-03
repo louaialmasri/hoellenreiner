@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
 
-const BANNER_FILE = '/banner.png';
+const BANNER_FILE = '/banner.jpg';
 
 export default function Home() {
   return (
@@ -34,15 +34,15 @@ export default function Home() {
         />
         <div className={styles.heroContent}>
           {/* Wir nutzen motion für ein sanftes Einblenden des Textes */}
-          <motion.h3 
+          <motion.h1 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className={styles.goldShimmer} 
             style={{ fontSize: '2rem', fontWeight: '600', margin: 0, lineHeight: 1.2 }} // Styling manuell sicherstellen, da h2 sonst kleiner wäre
           >
-            WERTE WAHREN, SCHÄTZE ERKENNEN
-          </motion.h3>
+            WERTE WAHREN, <br></br>SCHÄTZE ERKENNEN
+          </motion.h1>
         </div>
       </div>
 

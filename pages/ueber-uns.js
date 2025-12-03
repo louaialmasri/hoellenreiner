@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 // Bilder
 const IMG_WAAGE_1 = '/waage-1.jpeg';
 const IMG_WAAGE_2 = '/waage-2.jpeg';
-const IMG_WAPPEN = '/Wappen.png'; 
+const IMG_WAPPEN = '/Wappen1.png'; 
 
 export default function UeberUns() {
   return (

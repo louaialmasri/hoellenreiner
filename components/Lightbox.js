@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function Lightbox({ selectedImage, onClose }) {
   // Verhindert das Scrollen der Hauptseite, wenn Lightbox offen ist
@@ -20,24 +20,27 @@ export default function Lightbox({ selectedImage, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={onClose} // Klick auf Hintergrund schließt
+          onClick={onClose} 
           style={styles.overlay}
         >
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
+            exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             style={styles.imageContainer}
-            onClick={(e) => e.stopPropagation()} // Klick auf Bild schließt NICHT
+            onClick={(e) => e.stopPropagation()} 
           >
+            {/* HIER IST DIE ÄNDERUNG: */}
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
-              width={1000}
-              height={800}
-              style={styles.image}
+              fill // WICHTIG: Füllt den Container automatisch
+              style={{ objectFit: 'contain' }} // Zeigt IMMER das ganze Bild (nichts abgeschnitten)
+              priority // Lädt sofort schnell
+              sizes="90vw" // Optimierung für Browser
             />
+            
             <button onClick={onClose} style={styles.closeButton}>
               &times;
             </button>
@@ -55,9 +58,9 @@ const styles = {
     left: 0,
     width: '100vw',
     height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, 0.9)', // Sehr dunkler Hintergrund
-    backdropFilter: 'blur(5px)', // Milchglas im Hintergrund
-    zIndex: 2000, // Über dem Header!
+    backgroundColor: 'rgba(0, 0, 0, 0.95)', // Noch etwas dunkler für besseren Kontrast
+    backdropFilter: 'blur(5px)',
+    zIndex: 2000, 
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -66,25 +69,23 @@ const styles = {
   },
   imageContainer: {
     position: 'relative',
-    maxWidth: '90vw',
-    maxHeight: '90vh',
+    // Wir geben dem Container eine feste Größe relativ zum Bildschirm
+    // Das Bild füllt diesen Bereich dann mit "contain" aus
+    width: '90vw',  
+    height: '85vh', 
+    maxWidth: '1200px', // Nicht breiter als das
+    
     borderRadius: '8px',
     overflow: 'hidden',
-    boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
-    border: '1px solid var(--color-gold-dark)',
+    // Kein Rahmen hier nötig, sieht cleaner aus ohne, oder nur dezent:
+    // border: '1px solid var(--color-gold-dark)', 
     cursor: 'default',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'contain',
-    display: 'block',
   },
   closeButton: {
     position: 'absolute',
-    top: '10px',
-    right: '10px',
-    background: 'rgba(0,0,0,0.5)',
+    top: '20px',
+    right: '20px',
+    background: 'rgba(255, 255, 255, 0.2)', // Leicht transparent
     color: '#fff',
     border: 'none',
     borderRadius: '50%',
@@ -96,5 +97,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     transition: 'background 0.2s',
+    zIndex: 10, // Über dem Bild
   }
 };
