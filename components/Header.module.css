@@ -47,11 +47,11 @@
 .logoText {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-gold-light);
   letter-spacing: 1px;
   /* Leichter Schatten für bessere Lesbarkeit auf dem Bild */
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 0 1px var(--color-gold-light), 0 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Navigation Styles (bleiben gleich) */
@@ -64,7 +64,7 @@
 .navLink {
   font-family: var(--font-sans);
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-light-text);
   text-decoration: none;
   transition: color 0.2s;

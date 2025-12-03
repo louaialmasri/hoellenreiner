@@ -9,13 +9,13 @@ import { Cormorant_Garamond, Lato } from 'next/font/google';
 // 2. Schriften konfigurieren
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400', '600'],
+  weight: ['400', '600', '700',],
   variable: '--font-serif', // Wir machen sie als CSS-Variable verfügbar
 });
 
 const lato = Lato({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400','700','900'],
   variable: '--font-sans',
 });
 

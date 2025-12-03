@@ -2,21 +2,49 @@
 .pageWrapper {
   display: flex;
   flex-direction: column;
-  gap: 100px; /* Viel Platz zwischen "Moderne" und "Tradition" */
+  /* Weniger Abstand als vorher, da wir die Linie dazwischen setzen */
+  gap: 0; 
   margin-top: 60px;
   margin-bottom: 60px;
 }
 
-/* Eine einzelne Sektion */
-.section {
+/* --- NEU: Der Einleitungs-Bereich (Die "Frage") --- */
+.introSection {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.introSection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  border-bottom: none; /* Kein Unterstrich hier, wirkt cleaner */
+}
+
+.introSection p {
+  font-size: 1.25rem; /* Etwas größerer Text für die Einleitung */
+  color: #555;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- NEU: Die Verbindungslinie --- */
+.connector {
+  width: 2px;
+  height: 100px; /* Länge der Linie */
+  background: linear-gradient(to bottom, var(--color-gold-light), var(--color-gold-dark));
+  margin: 0 auto; /* Zentriert */
+  margin-bottom: 40px; /* Abstand zum Wappen */
+}
+
+/* --- Der Historien-Bereich (Die "Antwort") --- */
+.historySection {
   display: flex;
   align-items: center;
   gap: 60px;
-}
-
-/* Die "Tradition"-Sektion drehen wir um (Bild links) */
-.sectionReverse {
-  flex-direction: row-reverse;
+  /* Wir drehen es um: Wappen Links, Text Rechts für schöne Balance */
+  flex-direction: row-reverse; 
 }
 
 .textColumn {
@@ -29,26 +57,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
 }
 
-.image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  border: 1px solid var(--color-gold-dark);
-  padding: 5px;
-  background: #fff;
-}
-
-/* Spezieller Style für das Wappen (sollte nicht beschnitten werden) */
 .wappenImage {
-  width: 60%; /* Wappen wirkt besser, wenn es etwas Luft hat */
+  width: 60%; 
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 10px 20px rgba(184, 134, 11, 0.2)); /* Goldener Schatten */
+  filter: drop-shadow(0 10px 20px rgba(184, 134, 11, 0.2));
 }
 
 .subline {
@@ -63,7 +78,7 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-  .section, .sectionReverse {
+  .historySection {
     flex-direction: column;
     gap: 40px;
     text-align: center;

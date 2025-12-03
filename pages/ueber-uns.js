@@ -4,8 +4,6 @@ import styles from '../styles/UeberUns.module.css';
 import { motion } from 'framer-motion';
 
 // Bilder
-const IMG_WAAGE_1 = '/waage-1.jpeg';
-const IMG_WAAGE_2 = '/waage-2.jpeg';
 const IMG_WAPPEN = '/Wappen1.png'; 
 
 export default function UeberUns() {
@@ -15,13 +13,12 @@ export default function UeberUns() {
         <title>Über Uns & Historie - Höllenreiner A.G.</title>
       </Head>
       
-      {/* NEU: Der dunkle Page-Hero (wie bei Leistungen) */}
+      {/* Page Hero */}
       <div className="subPageHero">
         <div className="container" style={{padding: 0}}>
           <h1>Über Uns & Historie</h1>
           <p>
-            Tradition, die verpflichtet. Kompetenz, die überzeugt.<br />
-            Lernen Sie das Familienunternehmen Höllenreiner kennen.
+            Tradition, die verpflichtet. Kompetenz, die überzeugt.
           </p>
         </div>
       </div>
@@ -29,44 +26,47 @@ export default function UeberUns() {
       <div className="container">
         <div className={styles.pageWrapper}>
 
-          {/* SEKTION 1: Die Moderne (Warum verkaufen?) */}
+          {/* TEIL 1: Die Frage (Zentriert, ohne Bilder) */}
           <motion.div 
-            className={styles.section}
+            className={styles.introSection}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className={styles.textColumn}>
-              <span className={styles.subline}>Kompetenz & Fairness</span>
-              {/* Hier nutzen wir h2, da h1 schon oben im Hero ist */}
-              <h2>Warum an Höllenreiner verkaufen?</h2>
-              <p>
-                Die Höllenreiner A.G. verbindet langjährige Erfahrung im Umgang mit Edelmetallen, Antikschmuck und historischen 
-                Wertgegenständen mit einem hohen Anspruch an Seriosität und Fachwissen. 
-              </p>
-              <p>
-                Jede Einwertung erfolgt <strong>transparent, nachvollziehbar und nach aktuellen Marktstandards</strong>, 
-                sodass Sie stets sicher sein können, einen fairen Preis zu erhalten. Ob Einzelstück, Erbstück oder umfangreiche 
-                Sammlung – wir behandeln jedes Objekt mit der gebotenen Sorgfalt und dem Respekt, den seine Geschichte verdient.
-              </p>
-            </div>
-            <div className={styles.imageColumn}>
-              <Image src={IMG_WAAGE_1} alt="Transparente Bewertung Waage" width={400} height={300} className={styles.image} />
-              <Image src={IMG_WAAGE_2} alt="Fachkundige Bewertung Gold" width={400} height={300} className={styles.image} />
-            </div>
+            <span className={styles.subline}>Kompetenz & Fairness</span>
+            <h2>Warum an Höllenreiner verkaufen?</h2>
+            
+            <p>
+              Die Höllenreiner A.G. verbindet langjährige Erfahrung im Umgang mit Edelmetallen, 
+              Antikschmuck und historischen Wertgegenständen mit einem hohen Anspruch an Seriosität.
+            </p>
+            <p>
+              Unsere Antwort auf die Frage nach dem "Warum" ist einfach: Weil wir nicht nur Händler sind, 
+              sondern Bewahrer von Werten. Jede Einwertung erfolgt transparent und respektvoll – 
+              denn unsere heutige Arbeitsweise fußt auf einem Fundament, das Jahrhunderte überdauert hat.
+            </p>
           </motion.div>
 
-          {/* SEKTION 2: Die Historie (Das Wappen) */}
+          {/* Die visuelle Verbindungslinie */}
           <motion.div 
-            className={`${styles.section} ${styles.sectionReverse}`} 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className={styles.connector}
+            initial={{ height: 0 }}
+            whileInView={{ height: 100 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          ></motion.div>
+
+          {/* TEIL 2: Die Antwort (Das Wappen) */}
+          <motion.div 
+            className={styles.historySection}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className={styles.textColumn}>
-              <span className={styles.subline}>Tradition seit 1438</span>
+              <span className={styles.subline}>Die Antwort: Tradition seit 1438</span>
               <h2>Ein Name mit Geschichte</h2>
               <p>
                 Seriosität hat bei uns Tradition. Das Geschlecht der Höllenreiner wird bereits im <strong>14. Jahrhundert</strong> urkundlich nachgewiesen.
@@ -77,6 +77,7 @@ export default function UeberUns() {
                 nach den alten Werten des ehrbaren Kaufmanns – mit Handschlagqualität, Ehre und Aufrichtigkeit.
               </p>
             </div>
+            
             <div className={styles.imageColumn}>
               <Image 
                 src={IMG_WAPPEN} 

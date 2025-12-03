@@ -34,15 +34,14 @@ export default function Home() {
         />
         <div className={styles.heroContent}>
           {/* Wir nutzen motion für ein sanftes Einblenden des Textes */}
-          <motion.h1 
+          <motion.h2 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className={styles.goldShimmer} 
-            style={{ fontSize: '2rem', fontWeight: '600', margin: 0, lineHeight: 1.2 }} // Styling manuell sicherstellen, da h2 sonst kleiner wäre
           >
             WERTE WAHREN, <br></br>SCHÄTZE ERKENNEN
-          </motion.h1>
+          </motion.h2>
         </div>
       </div>
 
