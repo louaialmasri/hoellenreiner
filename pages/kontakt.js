@@ -6,23 +6,21 @@ export default function Kontakt() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [image, setImage] = useState(null); // Das Bild
-  const [fileName, setFileName] = useState(''); // Der Dateiname für die Anzeige
-  const [status, setStatus] = useState(''); // 'success', 'error', 'loading'
+  const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState('');
+  const [status, setStatus] = useState('');
+  
+  // SPAM-SCHUTZ: Das Honeypot Feld (für Bots)
+  const [honeypot, setHoneypot] = useState('');
 
-  // Funktion: Bild verarbeiten
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Größen-Check: Max 3MB (Vercel Serverless Limit ist ~4.5MB)
       if (file.size > 3 * 1024 * 1024) {
-        alert("Das Bild ist zu groß (Maximal 3 MB). Bitte wählen Sie ein kleineres Bild.");
+        alert("Das Bild ist zu groß (Maximal 3 MB).");
         return;
       }
-
       setFileName(file.name);
-      
-      // Bild in Base64 umwandeln
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(reader.result);
@@ -33,21 +31,25 @@ export default function Kontakt() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // SPAM-CHECK: Wenn das Honeypot-Feld ausgefüllt ist, brechen wir ab (tun aber so, als ob es geklappt hat)
+    if (honeypot) {
+      console.log("Spam detected!");
+      setStatus('success'); // Fake success für den Bot
+      return;
+    }
+
     setStatus('loading');
 
     try {
       const res = await fetch('/api/kontakt', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // Wir senden das Bild mit
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message, image }),
       });
 
       if (res.status === 200) {
         setStatus('success');
-        // Alles zurücksetzen
         setName('');
         setEmail('');
         setMessage('');
@@ -68,13 +70,12 @@ export default function Kontakt() {
         <title>Kontakt - Höllenreiner A.G.</title>
       </Head>
       
-      {/* Dunkler Page Hero */}
       <div className="subPageHero">
         <div className="container" style={{padding: 0}}>
           <h1>Kontaktieren Sie uns</h1>
           <p>
-            Haben Sie Fragen zu Ihren Wertgegenständen oder möchten Sie eine unverbindliche erste Einschätzung?<br/>
-            Senden Sie uns gerne vorab ein Bild.
+            Möchten Sie eine unverbindliche erste Einschätzung oder einen Termin vereinbaren?<br/>
+            Wir sind für Sie da – diskret und persönlich.
           </p>
         </div>
       </div>
@@ -82,6 +83,20 @@ export default function Kontakt() {
       <div className={`container ${styles.formContainer}`}>
         <form onSubmit={handleSubmit} className={styles.form}>
           
+          {/* SPAM-FALLE (Unsichtbar für Menschen) */}
+          <div style={{ display: 'none', opacity: 0, position: 'absolute', left: '-9999px' }}>
+            <label htmlFor="website_url_check">Bitte dieses Feld leer lassen</label>
+            <input
+              type="text"
+              id="website_url_check"
+              name="website_url_check"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="name" className={styles.label}>Name</label>
             <input
@@ -117,18 +132,17 @@ export default function Kontakt() {
               required
               rows="6"
               className={styles.textarea}
-              placeholder="Beschreiben Sie Ihr Objekt..."
+              placeholder="Beschreiben Sie Ihr Anliegen..."
             />
           </div>
 
-          {/* Der neue Bild-Upload */}
           <div className={styles.formGroup}>
             <label className={styles.label}>Bild anhängen (Optional, max 3MB)</label>
             <div className={styles.fileUploadWrapper}>
               <input 
                 type="file" 
                 id="file-upload" 
-                accept="image/*" // Nur Bilder erlauben
+                accept="image/*" 
                 onChange={handleImageChange}
                 className={styles.fileInput}
               />
@@ -144,12 +158,12 @@ export default function Kontakt() {
 
           {status === 'success' && (
             <p className={styles.successMsg}>
-              Vielen Dank! Ihre Nachricht (und Bild) wurde erfolgreich gesendet. Wir melden uns in Kürze.
+              Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns in Kürze bei Ihnen.
             </p>
           )}
           {status === 'error' && (
             <p className={styles.errorMsg}>
-              Fehler beim Senden. Bitte überprüfen Sie, ob das Bild kleiner als 3MB ist oder rufen Sie uns an.
+              Es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.
             </p>
           )}
         </form>

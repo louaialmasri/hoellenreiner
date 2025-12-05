@@ -66,3 +66,11 @@ export default async function handler(req, res) {
     res.status(500).json({ message: 'Fehler beim Senden der E-Mail' });
   }
 }
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '10mb', // Erhöht das Limit auf 10 MB (genug Puffer für 3MB Bilder)
+    },
+  },
+};
