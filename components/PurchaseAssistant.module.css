@@ -1,0 +1,131 @@
+.assistantContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-form-border);
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #f0f0f0;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-gold-dark);
+  transition: width 0.3s ease;
+}
+
+.stepContent {
+  text-align: center;
+}
+
+.stepContent h3 {
+  color: var(--color-text);
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: #fcfbf9;
+  border: 1px solid var(--color-form-border);
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.card:hover {
+  border-color: var(--color-gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.uploadButton {
+  display: inline-block;
+  background: var(--color-gold-dark);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: background 0.2s;
+}
+
+.uploadButton:hover {
+  background: var(--color-gold-light);
+}
+
+.skipButton {
+  display: block;
+  margin: 0 auto;
+  background: none;
+  border: none;
+  color: #999;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.whatsappBtn {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.divider {
+  margin: 20px 0;
+  font-size: 0.9rem;
+  color: #ccc;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 15px;
+  background: var(--color-dark-bg);
+  color: var(--color-gold-light);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}

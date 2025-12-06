@@ -1,0 +1,93 @@
+.sliderContainer {
+  margin: 100px auto;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  background: white;
+  border: 1px solid var(--color-form-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  min-height: 300px;
+}
+
+.imageContainer {
+  flex: 1;
+  position: relative;
+  min-width: 300px;
+}
+
+.textContainer {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  color: var(--color-gold-dark);
+  margin-top: 0;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+}
+
+.description {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.priceTag {
+  display: inline-block;
+  background: var(--color-dark-bg);
+  color: var(--color-gold-light);
+  padding: 8px 15px;
+  font-weight: bold;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.navButton {
+  background: none;
+  border: 1px solid var(--color-gold-dark);
+  color: var(--color-gold-dark);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.navButton:hover {
+  background: var(--color-gold-dark);
+  color: white;
+}
+
+/* Mobile Optimierung */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+  .imageContainer {
+    height: 250px;
+    min-width: auto;
+  }
+  .textContainer {
+    padding: 20px;
+  }
+}

@@ -4,6 +4,9 @@ import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Lightbox from '../components/Lightbox';
+import PurchaseAssistant from '../components/PurchaseAssistant';
+import StorySlider from '../components/StorySlider';
+import FAQ from '../components/FAQ';
 
 const BANNER_FILE = '/banner.jpg';
 
@@ -135,6 +138,80 @@ export default function Home() {
             <p className={styles.trustText}>Seriöse Abwicklung in geschützter Atmosphäre. Hausbesuche garantieren Ihre Privatsphäre.</p>
           </div>
         </motion.div>
+        <motion.div>
+          {/* --- ABLAUF --- */}
+          <div className={`container ${styles.processSection}`}>
+            <h2>So einfach verkaufen Sie an uns</h2>
+            <p className={styles.welcomeText}>
+              Transparenz und Sicherheit stehen bei uns an erster Stelle. 
+              In nur drei Schritten verwandeln Sie Ihre Wertsachen in Kapital.
+            </p>
+
+            <div className={styles.processGrid}>
+              {/* Schritt 1 */}
+              <motion.div 
+                className={styles.processStep}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className={styles.stepNumber}>1</div>
+                <div className={styles.stepIcon}>📞</div>
+                <h3 className={styles.stepTitle}>Kontakt aufnehmen</h3>
+                <p className={styles.stepText}>
+                  Rufen Sie uns an oder senden Sie ein Foto per WhatsApp. 
+                  Wir klären erste Fragen und vereinbaren einen unverbindlichen Termin – bei Ihnen oder an einem Ort Ihrer Wahl.
+                </p>
+              </motion.div>
+
+              {/* Schritt 2 */}
+              <motion.div 
+                className={styles.processStep}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className={styles.stepNumber}>2</div>
+                <div className={styles.stepIcon}>🔍</div>
+                <h3 className={styles.stepTitle}>Kostenlose Bewertung</h3>
+                <p className={styles.stepText}>
+                  Wir prüfen Ihre Stücke (Gold, Schmuck, Militaria) direkt vor Ihren Augen. 
+                  Dank moderner Analyse-Methoden ermitteln wir den exakten Wert sofort.
+                </p>
+              </motion.div>
+
+              {/* Schritt 3 */}
+              <motion.div 
+                className={styles.processStep}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <div className={styles.stepNumber}>3</div>
+                <div className={styles.stepIcon}>🤝</div>
+                <h3 className={styles.stepTitle}>Sofortige Auszahlung</h3>
+                <p className={styles.stepText}>
+                  Sind Sie mit dem Angebot zufrieden? Dann erhalten Sie den Betrag sofort in bar 
+                  oder per Echtzeit-Überweisung. Diskret und ohne Wartezeit.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* ASSISTENTEN EINFÜGEN: */}
+        <div style={{ margin: '60px 0' }}>
+          <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>
+            Kontaktieren Sie uns ganz einfach und unverbindlich über unseren Anfrage-Assistenten
+          </h3>
+          <PurchaseAssistant />
+        </div>
+        </motion.div>
+
+        {/* STORY SLIDER EINFÜGEN: */}
+          <StorySlider />
 
         {/* --- ECHTE ANKÄUFE GALERIE --- */}
         <motion.div 
@@ -169,8 +246,10 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </motion.div>
-
+        </motion.div>#
+          
+        {/* --- NEUER ABSCHNITT: FAQ --- */}  
+          <FAQ />
       </div>
     </>
   );
